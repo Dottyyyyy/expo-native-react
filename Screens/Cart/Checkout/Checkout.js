@@ -8,7 +8,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native';
-import AuthGlobal from "../../../Context/store/AuthGlobal"
+import AuthGlobal from "../../../Context/Store/AuthGlobal"
 
 const countries = require("../../../assets/countries.json");
 
