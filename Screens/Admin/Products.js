@@ -20,7 +20,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 var { height, width } = Dimensions.get("window")
 
 const Products = (props) => {
-    
+
     const [productList, setProductList] = useState([]);
     const [productFilter, setProductFilter] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -52,10 +52,22 @@ const Products = (props) => {
             setProductFilter(productList)
         }
         setProductFilter(
-            productList.filter((i) => 
+            productList.filter((i) =>
                 i.name.toLowerCase().includes(text.toLowerCase())
             )
         )
+    }
+
+    const deleteProduct = (id) => {
+        axios
+            .delete(`${baseURL}products/${id}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then((res) => {
+                const products = productFilter.filter((item) => item.id !== id)
+                setProductFilter(products)
+            })
+            .catch((error) => console.log(error));
     }
     useFocusEffect(
         useCallback(
@@ -102,7 +114,7 @@ const Products = (props) => {
                     <ListItem
                         item={item}
                         index={index}
-                    // deleteProduct={deleteProduct}
+                    deleteProduct={deleteProduct}
 
                     />
                 )}
