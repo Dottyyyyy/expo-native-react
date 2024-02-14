@@ -7,7 +7,7 @@ import Cart from "../Screens/Cart/Cart";
 import CartIcon from "../Shared/CartIcon";
 import CartNavigator from "./CartNavigator";
 import UserNavigator from "./UserNavigator";
-import AdminNavigator from "./adminNavigator";
+import AdminNavigator from "./AdminNavigator";
 import AuthGlobal from "../Context/Store/AuthGlobal";
 const Tab = createBottomTabNavigator();
 
