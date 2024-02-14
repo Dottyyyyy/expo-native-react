@@ -16,7 +16,7 @@ const codes = [
   { name: "shipped", code: "2" },
   { name: "delivered", code: "1" },
 ];
-const OrderCard = ({ item }) => {
+const OrderCard = ({ item, select }) => {
   const [orderStatus, setOrderStatus] = useState('');
   const [statusText, setStatusText] = useState('');
   const [statusChange, setStatusChange] = useState('');
@@ -121,8 +121,7 @@ const OrderCard = ({ item }) => {
         </View>
         {/* {item.editMode ? ( */}
         <View>
-
-          <Select
+          {select ? null : <><Select
             width="80%"
             iosIcon={<Icon name="arrow-down" color={"#007aff"} />}
             style={{ width: undefined }}
@@ -141,43 +140,41 @@ const OrderCard = ({ item }) => {
                 value={c.code}
               />
             })}
-          </Select>
-
-          <EasyButton
-            secondary
-            large
-            onPress={() => updateOrder()}
-          >
-            <Text style={{ color: "white" }}>Update</Text>
-          </EasyButton>
+          </Select><EasyButton
+              secondary
+              large
+              onPress={() => updateOrder()}
+            >
+              <Text style={{ color: "white" }}>Update</Text>
+              </EasyButton></> }
+          </View>
+          {/* //   ) : null} */}
         </View>
-        {/* //   ) : null} */}
       </View>
-    </View>
 
 
-  );
+      );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    margin: 10,
-    borderRadius: 10,
+      const styles = StyleSheet.create({
+        container: {
+        padding: 20,
+      margin: 10,
+      borderRadius: 10,
   },
-  title: {
-    backgroundColor: "#62B1F6",
-    padding: 5,
+      title: {
+        backgroundColor: "#62B1F6",
+      padding: 5,
   },
-  priceContainer: {
-    marginTop: 10,
-    alignSelf: "flex-end",
-    flexDirection: "row",
+      priceContainer: {
+        marginTop: 10,
+      alignSelf: "flex-end",
+      flexDirection: "row",
   },
-  price: {
-    color: "white",
-    fontWeight: "bold",
+      price: {
+        color: "white",
+      fontWeight: "bold",
   },
 });
 
-export default OrderCard;
+      export default OrderCard;
